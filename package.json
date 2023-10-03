@@ -1,0 +1,30 @@
+{
+  "name": "bdss",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.11",
+    "@mui/material": "^5.14.11",
+    "dotenv": "^16.3.1",
+    "framer-motion": "^10.16.4",
+    "next": "^13.5.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-intersection-observer": "^9.5.2",
+    "resend": "^1.1.0",
+    "styled-components": "^6.0.8"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^2.1.4",
+    "eslint": "^8",
+    "eslint-config-next": "13.5.4"
+  }
+}
