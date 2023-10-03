@@ -10,7 +10,7 @@ function ViewWrapper(props){
 
     useEffect( () => {
         inView && props.setActive(props.id)
-    },[inView]);
+    },[inView, props]);
 
     return (
     <div id={props.id} ref={ref}>

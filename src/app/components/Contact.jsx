@@ -217,12 +217,14 @@ function Contact({ setActive }) {
         {Icons.map(({ component , link },i) => 
         <motion.div
             key={i} 
-            children={component}
             whileHover={{
               scale : 1.2
             }}
             onClick={() => location.href = link }
-        />)}
+        >
+          {component}
+        </motion.div>
+          )}
       </Stack>
       </motion.div>}
     </Info>

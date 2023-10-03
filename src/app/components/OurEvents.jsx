@@ -122,7 +122,7 @@ const fetchInfo = async () => {
   return res.data;
 }
 
-function ourEvents({ setActive }) {
+function OurEvents({ setActive }) {
   const { ref, inView, _ } = useInView({
     threshold: 0.2,
     triggerOnce : true
@@ -166,4 +166,4 @@ function ourEvents({ setActive }) {
   );
 }
 
-export default ourEvents;
+export default OurEvents;

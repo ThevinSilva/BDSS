@@ -160,7 +160,7 @@ function Members() {
       setWidth(ref.current.scrollWidth - ref.current.offsetWidth);
       fetchInfo()
         .then(data => setMembers(data))
-  },[inView]);
+  },[inView,ref]);
 
   return (
     <Section>

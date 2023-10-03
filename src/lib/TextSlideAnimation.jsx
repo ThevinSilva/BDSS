@@ -40,7 +40,7 @@ const TextSlideAnimation = ({ children, width = "fit-content" }) => {
 
     useEffect(() => {
         isInView && mainControls.start("visible");
-    }, [isInView]);
+    }, [isInView,mainControls]);
 
     return (
         <div ref={ref} style={{ position: "relative", overflow: "hidden" }}>
