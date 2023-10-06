@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>BDSS website</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="./Turqouise-BDSS-B-Logo.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./Turqouise-BDSS-B-Logo.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./Turqouise-BDSS-B-Logo.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./Turqouise-BDSS-B-Logo.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./Turqouise-BDSS-B-Logo.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./Turqouise-BDSS-B-Logo.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./Turqouise-BDSS-B-Logo.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./Turqouise-BDSS-B-Logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./Turqouise-BDSS-B-Logo.png">
+    <link rel="icon" type="image/png" href="./Turqouise-BDSS-B-Logo.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="./Turqouise-BDSS-B-Logo.png" sizes="194x194">
+    <link rel="icon" type="image/png" href="./Turqouise-BDSS-B-Logo.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="./Turqouise-BDSS-B-Logo.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="./Turqouise-BDSS-B-Logo.png" sizes="16x16">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-highway.css">
+    <script src="https://kit.fontawesome.com/5918af34b4.js" crossorigin="anonymous" defer=""></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+
+      <div class="navigation w3-container">
+        <nav class="nav-container w3-padding-large">
+          <div class="logo">
+            <a href="#home" ><img src="./BDSS-Full-Logo.png" alt="BDSS" width="117" height="50"></a>
+          </div>
+          <div class="mobile-button">
+            <span style="float: right;" onclick="toggleMobileNavigation()">&#9776;</span>
+          </div>
+          <div class="links">
+            <a href="#about" >About</a>
+            <a href="#our events" >Our Events</a>
+            <a href="#upcoming" >Upcoming</a>
+            <a href="#contact" >Contact</a>            
+          </div>
+          <div id="mobile-sidenav" class="mobile-links">
+            <div class="mobile-logo" style="display: inline;">
+              <a href="#home" class="logo"><img src="./BDSS-Full-Logo.png" alt="BDSS" width="117" height="50" style="float: margin-left;"></a>
+              <a href="javascript:void(0)" class="closebtn" onclick="toggleMobileNavigation()">&times;</a>
+            </div>
+            <a href="#about" onclick="toggleMobileNavigation()">About Us</a>
+            <a href="#our events" onclick="toggleMobileNavigation()">Our Events</a>
+            <a href="#upcoming" onclick="toggleMobileNavigation()">Upcoming</a>
+            <a href="#contact" onclick="toggleMobileNavigation()">Contact</a>
+          </div>
+        </nav>
+      </div>
+
+      <div class="hero" id="home">
+        <div class="text container">
+          <p class="pre-title">Shape your future with data</p>
+          <img src="./BDSS-Full-Logo-Shaded.png" alt="BDSS" width="75%">
+          <p class="post-title">Introduce you to Data Science</p>
+          <a class="w3-button w3-round-large w3-highway-blue w3-hover-indigo" href="#our events">OUR EVENTS</a> 
+        </div>
+      </div>
+
+      <div class="about container w3-padding-large" id="about">
+        <div class="text-one">
+          <h2>About Us</h2>
+          <p>A society oriented around the field of data science with its main objectives to be: 
+            <br>(1) informing and training students on the growing field of data science, 
+            <br>(2) guiding members to their first step towards a career in the field, and 
+            <br>(3) providing a platform connect with like-minded data science enthusiasts. </p>
+          <a class="w3-button w3-round-large w3-highway-blue w3-hover-indigo" href="https://www.bristolsu.org.uk/groups/bristol-data-science-society-3cab" target="_blank">Read more</a> 
+        </div>
+        <div class="text-one">
+          <h2>We Have</h2>
+          <p>
+            During the year we will be organising a variety of different events to introduce you to Data Science.
+            <ul>
+              <li>You will learn new and train existing data science skills through our biweekly <strong>Python workshops</strong></li>
+              <li>You will have the opportunity to network with other data science enthusiasts in our <strong>social events</strong></li>
+              <li>You can hear professional data scientists share their passion in our <strong>industrial talk</strong> and <strong>data science at work</strong> and seek for internship, placement and graduate  job opportunities</li>
+              <li>You will be able to use your professional knowlegde to influence local community through our <strong>outreach volunteering opportunity</strong></li>
+              <li>You will hear alumni and current students who worked as data science interns, university research interns and placement job holders sharing their experience in our <strong>internship panel</strong></li>
+              <li>Expand your skillset further with our <strong>free DataQuest subscription</strong></li>
+              <li>You can show off your knowledge and get a feeling of working as data scientists in our annual <strong>Datathon</strong> competition</li>
+              <li>You can also be part of our <strong>sports team</strong></li> 
+              <li>BUT most of all you will become a part of a <strong>community</strong> which will certainly fascinate you and help you expand your horizons</li>
+            </ul>
+          </p>
+          <a class="w3-button w3-round-large w3-highway-blue w3-hover-indigo" href="https://www.bristolsu.org.uk/groups/bristol-data-science-society-3cab" target="_blank">Read more</a> 
+        </div>
+      </div>
+
+      <div class="w3-panel numbers" style="color:#fff;background-color:#33396d">
+        <h2 class="w3-center w3-xxxlarge">WE ARE</h2>
+        <p class="w3-center w3-xxxlarge show-medium">
+          <?xml version="1.0" encoding="utf-8"?>
+          <svg x="0px" y="0px" width="36" fill="#bed9f3" stroke="#bed9f3"
+            viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+          <g id="Down-arrow">
+            <path d="M17.2929993,29.7070007c-0.3906994-0.3906002-0.3906994-1.0234013,0-1.4140015
+              c0.3906002-0.3906002,1.0234013-0.3906002,1.4140015,0L32,41.5858994l13.2929993-13.2929001
+              c0.3905983-0.3906002,1.0233994-0.3906002,1.4140015,0C46.902298,28.4883003,47,28.7441998,47,29
+              c0,0.2558994-0.097702,0.5116997-0.2929993,0.7070007l-14,14c-0.3906021,0.3906975-1.0234013,0.3906975-1.4140015,0
+              L17.2929993,29.7070007z"/>
+            <path d="M32,64c17.6730957,0,32-14.3269005,32-32S49.6730957,0,32,0C14.3268003,0,0,14.3268995,0,32S14.3268003,64,32,64z M32,62
+              C15.4579,62,2,48.542099,2,32C2,15.4580002,15.4579,2,32,2s30,13.4580002,30,30C62,48.542099,48.542099,62,32,62z"/>
+          </svg>
+        </p>
+        <div class="container w3-padding-large">
+          <div class="text">
+            <p class="name"><strong>Jerry Wen</strong></p>
+            <p>President</p>
+          </div>
+          <div class="text">
+            <p class="name"><strong>Lam Phong Nguyen Dang</strong></p>
+            <p>Vice-President</p>
+          </div>
+          <div class="text">
+            <p class="name"><strong>Valerie Ooi</strong></p>
+            <p>Treasurer</p>
+          </div>
+          <div class="text">
+            <p class="name"><strong>Hans Tan</strong></p>
+            <p>Secretary</p>
+          </div>
+          <div class="text">
+            <p class="name"><strong>Annie Kemp</strong></p>
+            <p>Outreach Officer</p>
+          </div>
+          <div class="text">
+            <p class="name"><strong>Walter Kwong</strong></p>
+            <p>Equality Officer</p>
+          </div>
+          <div class="text">
+            <p class="name"><strong>Artin Tan, Lumi Long</strong></p>
+            <p>Workshop Creator</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="services container" id="our events">
+        <h2 class="w3-center">Our Events</h2>
+        <div class="cards w3-padding-large w3-margin-top">
+          <div class="card w3-card-2 w3-padding-large w3-border w3-border-blue w3-round-large">
+            <h3>PYTHON WORKSHOPS</h3>
+            <div class="card-text">
+              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
+                sed diem nonummy nibh euismod tincidunt ut lacreet dolore magna aliguam erat volutpat.</p>
+            </div>
+          </div>
+          <div class="card w3-card-2 w3-padding-large w3-border w3-border-blue w3-round-large">
+            <h3>SOCIAL EVENTS</h3>
+            <div class="card-text">
+              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
+                sed diem nonummy nibh euismod tincidunt ut lacreet dolore magna aliguam erat volutpat.</p>
+            </div>
+          </div>
+          <div class="card w3-card-2 w3-padding-large w3-border w3-border-blue w3-round-large">
+            <h3>DATA SCIENCE AT WORK</h3>
+            <div class="card-text">
+              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
+                sed diem nonummy nibh euismod tincidunt ut lacreet dolore magna aliguam erat volutpat.</p>
+            </div>
+          </div>
+          <div class="card w3-card-2 w3-padding-large w3-border w3-border-blue w3-round-large">
+            <h3>INTERSHIP PANEL</h3>
+            <div class="card-text">
+              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
+                sed diem nonummy nibh euismod tincidunt ut lacreet dolore magna aliguam erat volutpat.</p>
+            </div>
+          </div>
+          <div class="card w3-card-2 w3-padding-large w3-border w3-border-blue w3-round-large">
+            <h3>FREE DATAQUEST SUBSCRIPTION</h3>
+            <div class="card-text">
+              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
+                sed diem nonummy nibh euismod tincidunt ut lacreet dolore magna aliguam erat volutpat.</p>
+            </div>
+          </div>
+          <div class="card w3-card-2 w3-padding-large w3-border w3-border-blue w3-round-large">
+            <h3>DATATHON</h3>
+             <div class="card-text">
+              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
+                sed diem nonummy nibh euismod tincidunt ut lacreet dolore magna aliguam erat volutpat.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="careers container" id="upcoming">
+        <h2 class="w3-center">Book Our Upcoming Events</h2>
+        <div class="cards w3-padding-large w3-margin-top">
+
+            <div class="card w3-card-4">
+              <!--header class="w3-container" style="color:#fff;background-color:#444c91"-->
+              <header class="w3-container" style>
+                 <h3>NAME OF THE EVENT</h3>
+              </header>
+              <div class="content w3-container">
+                <div class="card-text" style="padding-bottom: 5px;">
+                  <h4><i class="fa fa-calendar"></i><span style="margin-left:10px;">Date</span></h4>
+                  <ul style="list-style-type: none;">
+                    <li>Lorem ipsum dolor sit amet</li>
+                  </ul>
+                  <h4><i data-tootip="Start/End Date" class="fas fa-clock" aria-hidden="true"></i><span style="margin-left:10px;">Time</span></h4>
+                  <ul style="list-style-type: none;">
+                    <li>Lorem ipsum dolor sit amet</li>
+                  </ul> 
+                  <h4><i data-tootip="Event Location" class="fa fa-location-arrow" aria-hidden="true"></i><span style="margin-left:10px;">Location</span></h4>
+                  <ul style="list-style-type: none;">
+                    <li>Lorem ipsum dolor sit amet</li>
+                  </ul>
+                </div>
+              </div>
+              <footer class="w3-container" style="padding: 0">
+                <a class="w3-button" style="width: 100%; color: #fff; background-color:#444c91;" href="#">More Info</a>
+              </footer>
+            </div>
+      </div>
+
+      <div class="contact container" id="contact">
+        <div class="short-contact">
+          <h2>Contact us</h2>
+          <p class="w3-xlarge">We would like to hear from you!</p>
+          <div class="w3-large w3-margin-top contact-info">
+            <i class="fa fa-location-arrow"></i><span style="margin-left:10px;"><a href="https://www.google.com/maps/place/Richmond+Building,+105+Queens+Rd,+Clifton,+Bristol+BS8+1LN/@51.4568735,-2.6154571,17z/data=!3m1!4b1!4m6!3m5!1s0x48718dc5c9f808f3:0xf75a289d03e18deb!8m2!3d51.4568702!4d-2.6128822!16s%2Fg%2F1vxdxr22?entry=ttu" target="_blank">Richmond Building, Queens Road, Bristol, England</a></span><br>
+            <i class="far fa-envelope"></i><span style="margin-left:10px;"><a href="bristol.dss2019@gmail.com">bristol.dss2019@gmail.com</a></span><br>
+            <!--i class="fa fa-phone"></i><span style="margin-left:10px;"><a href="+44 0197532486">+44 0197532486</a></span><br-->
+          </div>
+          <div class="w3-large w3-margin-top contact-info">
+            <i class="fab fa-linkedin-in"></i><span style="margin-left:10px;"><a href="https://www.linkedin.com/company/30618083/" target="_blank" style="text-decoration: none;">- LinkedIn</a></span><br>
+            <i class="fab fa-facebook"></i><span style="margin-left:10px;"><a href="https://www.facebook.com/BristolDSS/" target="_blank" style="text-decoration: none;"> - Facebook</a></span><br>
+            <i class="fab fa-twitter"></i><span style="margin-left:10px;"><a href="https://twitter.com/bristol_dss" target="_blank" style="text-decoration: none;">- Twitter</a></span><br>
+            <i class="fab fa-instagram"></i><span style="margin-left:10px;"><a href="https://www.instagram.com/bristol_dss/" target="_blank" style="text-decoration: none;">- Instagram</a></span><br>
+          </div>
+        </div>
+        <div class="form w3-margin-top">
+          <div class="container w3-round-xlarge">
+            <form class="w3-highway-blue w3-padding-large w3-round-large">
+              <label for="fname">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name">
+
+              <label for="lname">Email</label>
+              <input type="text" id="email" name="email" placeholder="Your email">
+
+              <label for="subject">Subject</label>
+              <textarea id="subject" name="subject" placeholder="Write something to our emailbox" style="height:200px"></textarea>
+              <input class="w3-metro-blue" type="submit" value="Submit">
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="w3-padding-large" style="color:#fff;background-color:#33396d" id="footer">
+        <p class="w3-center logo">© 2023 - BD<span>SS</span> - All rights reserved</p>
+      </div>
+
+  <script>
+    function toggleMobileNavigation() {
+      const mobileNavigation = document.getElementById("mobile-sidenav");
+      mobileNavigation.classList.toggle('mobile-links-active');
+    }
+</script>
+  </body>
+</html>

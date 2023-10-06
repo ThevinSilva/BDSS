@@ -1,12 +1,11 @@
 "use client";
 
-import {styled} from "styled-components";
+import { styled } from "styled-components";
 import GlobalStyles from "./GlobalStyles";
 import theme from "./Theme.js";
 import dynamic from "next/dynamic";
 import { ThemeProvider } from "@mui/material";
 import { useState, useRef, useEffect } from "react";
-
 
 const Header = dynamic(() => import("./components/Header"));
 const Hero = dynamic(() => import("./components/Hero"));
@@ -30,35 +29,37 @@ const Panels = styled.div`
   left: 0px;
 `;
 
-function Home() {
+const OverflowHidden = styled.div`
+  overflow-x: hidden !important;
+`;
 
-  const [active , setActive ] = useState('');
+function Home() {
+  const [active, setActive] = useState("");
   const [pannels, setPannels] = useState();
   const ref = useRef(false);
 
   useEffect(() => {
-    setPannels(ref.current.children)
-  },[ref])
+    setPannels(ref.current.children);
+  }, [ref]);
 
-
-  
   return (
     <MainContent>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <Header active={active} pannels={pannels}/>
-        <Hero setActive={setActive}/>
-        <Panels>
-          <About setActive={setActive}/>
-          <OurEvents setActive={setActive}/>
-          <Events setActive={setActive}/>
-          <Contact setActive={setActive}/>
-          <Footer setActive={setActive}/> 
-        </Panels>
+        <Header active={active} pannels={pannels} />
+        <Hero setActive={setActive} />
+        <OverflowHidden>
+          <Panels>
+            <About setActive={setActive} />
+            <OurEvents setActive={setActive} />
+            <Events setActive={setActive} />
+            <Contact setActive={setActive} />
+            <Footer setActive={setActive} />
+          </Panels>
+        </OverflowHidden>
       </ThemeProvider>
     </MainContent>
   );
 }
 
 export default Home;
-

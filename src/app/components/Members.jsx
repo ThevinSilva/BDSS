@@ -1,7 +1,7 @@
-import { styled } from 'styled-components';
-import { motion , useInView, useMotionValue } from "framer-motion";
+import { styled } from "styled-components";
+import { motion, useInView, useMotionValue } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
-import Image from 'next/image';
+import Image from "next/image";
 
 const Section = styled.div`
   padding-top: 2em;
@@ -9,94 +9,95 @@ const Section = styled.div`
   text-align: center;
   background-color: rgb(51, 57, 109);
 
-  h2{
-    font-size : var(--font-x-large);
-    color : white !important;
+  h2 {
+    font-size: var(--font-x-large);
+    color: white !important;
   }
-`
-
+`;
 
 const Container = styled(motion.div)`
-    cursor: grab;
-    overflow: hidden;
-    height: 100%;
-    width: 100%;
-    margin: 0em auto; 
-    &::-webkit-scrollbar{
-        display: none;
-    }
-`
+  cursor: grab;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  margin: 0em auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
 
 const InnerContainer = styled(motion.div)`
-    display: flex;
-    width: fit-content;
-`
+  display: flex;
+  width: fit-content;
+`;
 
 const Card = styled(motion.div)`
-    display: block;
-    height: 25rem;
-    width: 20rem;
-    padding: 1em;
-    margin: 2em;
-    background: white;
-    border-radius: 1em;
-    color: black;
-    -webkit-box-shadow: 11px 13px 28px -10px rgba(0,0,0,0.55);
-    -moz-box-shadow: 11px 13px 28px -10px rgba(0,0,0,0.55);
-    box-shadow: 11px 13px 28px -10px rgba(0,0,0,0.55);
+  display: block;
+  height: 25rem;
+  width: 20rem;
+  padding: 1em;
+  margin: 2em;
+  background: white;
+  border-radius: 1em;
+  color: black;
+  -webkit-box-shadow: 11px 13px 28px -10px rgba(0, 0, 0, 0.55);
+  -moz-box-shadow: 11px 13px 28px -10px rgba(0, 0, 0, 0.55);
+  box-shadow: 11px 13px 28px -10px rgba(0, 0, 0, 0.55);
 
-    > div{
-        padding-top: 1em;
-    }
+  > div {
+    padding-top: 1em;
+  }
+`;
 
-`
-
-
-const staggeredVarients = ( index ) => {
+const staggeredVarients = (index) => {
   return {
-  "hidden":{
-      opacity:0,
-      scale:0.8,
-      y:100,
-  },
-  "visible":{
-      opacity:1,
-      scale:1,
-      y:0,
-      transition:{
-          delay : index * 0.3,
-          duration: 0.5,
-      }
-  },}
-}
+    hidden: {
+      opacity: 0,
+      scale: 0.8,
+      y: 100,
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        delay: index * 0.3,
+        duration: 0.5,
+      },
+    },
+  };
+};
 
-const Cards = ({members}) =>  (
-  <> {members.map( ( {id , attributes} , index ) => 
+const Cards = ({ members }) => (
+  <>
+    {" "}
+    {members.map(({ id, attributes }, index) => (
       <Card
-          id={id}
-          key={id}
-          variants={staggeredVarients(index)}
-          initial="hidden"
-          animate="visible"
+        id={id}
+        key={id}
+        variants={staggeredVarients(index)}
+        initial="hidden"
+        animate="visible"
       >
-          <Image
-          sizes="100vw" 
+        <Image
+          sizes="100vw"
           style={{
-            width: '100%',
-            height: 'auto',
+            width: "100%",
+            height: "auto",
           }}
           width={500}
           height={500}
-          src={`${process.env.NEXT_PUBLIC_API}${attributes.image.data[0].attributes.url}`}
-          alt={`${process.env.NEXT_PUBLIC_API}${attributes.image.data[0].attributes.name}`} 
-          />
-          <div>
-            <h3>{attributes.role}</h3>
-            <p>{attributes.name}</p>
-          </div>
+          src={`${attributes.image.data.attributes.url}`}
+          alt={`${process.env.NEXT_PUBLIC_API}${attributes.image.data.attributes.name}`}
+        />
+        <div>
+          <h3>{attributes.role}</h3>
+          <p>{attributes.name}</p>
+        </div>
       </Card>
-      )}
-  </>)
+    ))}
+  </>
+);
 
 // const members = [
 //   {
@@ -134,52 +135,52 @@ const Cards = ({members}) =>  (
 // ]
 
 const fetchInfo = async () => {
-
   const reqOptions = {
     headers: {
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
     },
-    next : { revalidate: 3600 }
-  }
-  const req = await fetch(`${process.env.NEXT_PUBLIC_API}/api/members?populate=*`,reqOptions);
+    next: { revalidate: 3600 },
+  };
+  const req = await fetch(
+    `${process.env.NEXT_PUBLIC_API}/api/members?populate=*`,
+    reqOptions
+  );
 
-  const res = await req.json()
+  const res = await req.json();
+
+  console.log(res.data);
   return res.data;
-}
-
+};
 
 function Members() {
-
   const ref = useRef();
   const x = useMotionValue(0);
-  const [width , setWidth] = useState(0);
-  const inView = useInView(ref,{once: true});
-  const [members, setMembers ] = useState([])
-  
+  const [width, setWidth] = useState(0);
+  const inView = useInView(ref, { once: true });
+  const [members, setMembers] = useState([]);
+
   useEffect(() => {
-      setWidth(ref.current.scrollWidth - ref.current.offsetWidth);
-      fetchInfo()
-        .then(data => setMembers(data))
-  },[inView,ref]);
+    setWidth(ref.current.scrollWidth - ref.current.offsetWidth);
+    fetchInfo().then((data) => setMembers(data));
+  }, [inView, ref]);
 
   return (
     <Section>
       <h2>WE ARE</h2>
-      <Container
-        ref={ref}
-        style={{ x }}
-      >
-        <InnerContainer 
-          onMouseDown={e => { e.preventDefault();}}
-          drag="x" 
-          dragConstraints={{
-              right: 0, 
-              left : -width
+      <Container ref={ref} style={{ x }}>
+        <InnerContainer
+          onMouseDown={(e) => {
+            e.preventDefault();
           }}
-          transition={{ 
-              type:"spring",
-              duration:1
-          }}           
+          drag="x"
+          dragConstraints={{
+            right: 0,
+            left: -width,
+          }}
+          transition={{
+            type: "spring",
+            duration: 1,
+          }}
         >
           {inView && <Cards members={members} />}
         </InnerContainer>
@@ -189,4 +190,3 @@ function Members() {
 }
 
 export default Members;
-

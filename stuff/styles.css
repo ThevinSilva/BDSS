@@ -1,15 +1,10 @@
-@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap");
 :root {
-  --nav-color: #494f86;
+  --nav-color: rgb(51, 57, 109);
   --nav-link-color: rgba(233, 242, 251, 1);
   --nav-link-hover-color: rgb(190, 217, 243);
   --title-span-color: rgb(92, 174, 190);
   --hero-background: rgb(255, 255, 255);
-  --hero-background-gradient: linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(17, 57, 96, 1) 100%
-  );
+  --hero-background-gradient: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(17, 57, 96, 1) 100%);
 
   --font-small: 0.5em;
   --font-medium: 1em;
@@ -33,6 +28,7 @@
 
 /*Large Desktop*/
 /*General CSS*/
+
 
 html {
   scroll-behavior: smooth;
@@ -333,6 +329,7 @@ p {
   color: var(--title-span-color);
 }
 
+
 /*Careers*/
 .careers {
   padding-top: 50px;
@@ -433,6 +430,7 @@ textarea {
 
 .contact .form input[type="submit"]:hover {
   background-color: #45a049;
+
 }
 
 /*FOOTER*/
