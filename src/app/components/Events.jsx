@@ -6,7 +6,7 @@ import { AccessTime, LocationOn, CalendarMonth } from "@mui/icons-material";
 import {motion} from "framer-motion";
 import { useInView } from 'react-intersection-observer';
 import TextSlideAnimation from "../../lib/TextSlideAnimation";
-
+import Image from "next/image";
 
 const Container = styled(ViewWrapper)`
   display: flex;
@@ -22,6 +22,19 @@ const Cards = styled(Stack)`
 const Section = styled.div`
   position: relative;
   /* height: 100%; */
+`
+
+const NoEvents = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  h4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--font-x-large);
+  }
 `
 
 const Text = styled(motion.div)`
@@ -42,6 +55,14 @@ const Text = styled(motion.div)`
       }
     }
 `
+
+const SVG = styled(Image)`
+  /* results in white color */
+  height: 60%;
+  padding-top: 10px;
+  margin: 0 auto;
+`
+
 const fetchInfo = async () => {
 
   const reqOptions = {
@@ -53,7 +74,7 @@ const fetchInfo = async () => {
   const req = await fetch(`${process.env.NEXT_PUBLIC_API}/api/events?populate=*`,reqOptions);
 
   const res = await req.json()
-  console.log(res)
+  console.log(res.data)
   return res.data;
 }
 
@@ -84,7 +105,7 @@ function Events({ setActive }) {
             spacing={2}
             >
 
-          {inView && data.map(({id , attributes}) =>
+          {inView && (data.length > 0 ? data.map(({id , attributes}) =>
           <motion.div
           key={id}
           initial={{
@@ -158,8 +179,20 @@ function Events({ setActive }) {
                 </Button>
               </CardActions>
             </Card>
-          </motion.div> 
-            )}
+          </motion.div>) 
+            : 
+          <NoEvents>
+            <SVG 
+              src={"/presentation-d.svg"}
+              width={500}
+              height={500}
+              alt={"No Events"}
+              />  
+              <h4>
+                No Events
+              </h4>
+          </NoEvents>
+          )}
           </Cards>
       </Section>
   </Container>;

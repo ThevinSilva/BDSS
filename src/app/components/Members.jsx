@@ -71,7 +71,7 @@ const staggeredVarients = (index) => {
 const Cards = ({ members }) => (
   <>
     {" "}
-    {members.map(({ id, attributes }, index) => (
+    {members && members.map(({ id, attributes }, index) => (
       <Card
         id={id}
         key={id}
@@ -88,7 +88,7 @@ const Cards = ({ members }) => (
           width={500}
           height={500}
           src={`${attributes.image.data.attributes.url}`}
-          alt={`${process.env.NEXT_PUBLIC_API}${attributes.image.data.attributes.name}`}
+          alt={`${attributes.image.data.attributes.name}`}
         />
         <div>
           <h3>{attributes.role}</h3>
@@ -147,8 +147,6 @@ const fetchInfo = async () => {
   );
 
   const res = await req.json();
-
-  console.log(res.data);
   return res.data;
 };
 

@@ -6,6 +6,7 @@ import theme from "./Theme.js";
 import dynamic from "next/dynamic";
 import { ThemeProvider } from "@mui/material";
 import { useState, useRef, useEffect } from "react";
+import Head from 'next/head'
 
 const Header = dynamic(() => import("./components/Header"));
 const Hero = dynamic(() => import("./components/Hero"));
@@ -30,7 +31,7 @@ const Panels = styled.div`
 `;
 
 const OverflowHidden = styled.div`
-  overflow-x: hidden !important;
+  overflow-x: none !important;
 `;
 
 function Home() {
@@ -44,6 +45,9 @@ function Home() {
 
   return (
     <MainContent>
+      <Head>
+        <title>My page title</title>
+      </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <Header active={active} pannels={pannels} />
