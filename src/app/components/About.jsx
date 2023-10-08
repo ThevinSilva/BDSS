@@ -106,7 +106,7 @@ function About({ setActive }) {
             }}
             transition={{
               type: "spring",
-              delay : 6,
+              delay : 3,
               duration: 1
             }}
           >

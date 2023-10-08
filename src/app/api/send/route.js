@@ -9,8 +9,7 @@ export async function POST(request) {
     const formData = await request.json()
     const data = await resend.emails.send({
         from: "no-reply@bdssbristol.co.uk",
-        // to: ["rt22190@bristol.ac.uk","bristol.dss2019@gmail.com"],
-        to: "thevin.silva@gmail.com",
+        to: ["rt22190@bristol.ac.uk","bristol.dss2019@gmail.com","thevin.silva@gmail.com"],
         subject: `NAME : ${formData.name} | EMAIL : ${formData.email} `,
         text: formData.text,
     });

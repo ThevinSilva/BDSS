@@ -169,7 +169,7 @@ export default function Header({ active }) {
           tabs={Tabs} 
           clickHandler={clickHandler} 
           active={active}
-          isopen={isopen}
+          isOpen={isopen}
           toggleOpen={toggleOpen} 
         />
     </motion.nav>}

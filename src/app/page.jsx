@@ -6,7 +6,7 @@ import theme from "./Theme.js";
 import dynamic from "next/dynamic";
 import { ThemeProvider } from "@mui/material";
 import { useState, useRef, useEffect } from "react";
-import Head from 'next/head'
+import Head from "next/head";
 
 const Header = dynamic(() => import("./components/Header"));
 const Hero = dynamic(() => import("./components/Hero"));
@@ -47,6 +47,10 @@ function Home() {
     <MainContent>
       <Head>
         <title>My page title</title>
+        <meta property="og:title" content="My page title" key="title" />
+      </Head>
+      <Head>
+        <meta property="og:title" content="My new title" key="title" />
       </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyles />

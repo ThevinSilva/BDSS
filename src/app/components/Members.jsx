@@ -1,6 +1,7 @@
+import { motion, useMotionValue } from "framer-motion";
+import { useEffect, useState, useRef, useCallback } from "react";
+import { useInView } from "react-intersection-observer";
 import { styled } from "styled-components";
-import { motion, useInView, useMotionValue } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 
 const Section = styled.div`
@@ -8,6 +9,7 @@ const Section = styled.div`
   padding-bottom: 2em;
   text-align: center;
   background-color: rgb(51, 57, 109);
+
 
   h2 {
     font-size: var(--font-x-large);
@@ -29,6 +31,7 @@ const Container = styled(motion.div)`
 const InnerContainer = styled(motion.div)`
   display: flex;
   width: fit-content;
+  height: 30rem;
 `;
 
 const Card = styled(motion.div)`
@@ -154,8 +157,21 @@ function Members() {
   const ref = useRef();
   const x = useMotionValue(0);
   const [width, setWidth] = useState(0);
-  const inView = useInView(ref, { once: true });
   const [members, setMembers] = useState([]);
+  const { ref : viewRef, inView, _ } = useInView({
+    threshold: 1,
+    triggerOnce: true
+  });
+
+
+  const setRefs = useCallback(
+    (node) => {
+      ref.current = node;
+      viewRef(node);
+    },
+    [viewRef],
+  );
+
 
   useEffect(() => {
     setWidth(ref.current.scrollWidth - ref.current.offsetWidth);
@@ -165,8 +181,9 @@ function Members() {
   return (
     <Section>
       <h2>WE ARE</h2>
-      <Container ref={ref} style={{ x }}>
+      <Container ref={setRefs} style={{ x }}>
         <InnerContainer
+          ref={viewRef}
           onMouseDown={(e) => {
             e.preventDefault();
           }}

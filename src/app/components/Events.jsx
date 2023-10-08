@@ -28,6 +28,7 @@ const NoEvents = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  padding: 0px !important;
 
   h4{
     display: flex;
@@ -58,9 +59,10 @@ const Text = styled(motion.div)`
 
 const SVG = styled(Image)`
   /* results in white color */
-  height: 60%;
+  width: 100%;
   padding-top: 10px;
   margin: 0 auto;
+  padding: 0%;
 `
 
 const fetchInfo = async () => {
@@ -74,14 +76,13 @@ const fetchInfo = async () => {
   const req = await fetch(`${process.env.NEXT_PUBLIC_API}/api/events?populate=*`,reqOptions);
 
   const res = await req.json()
-  console.log(res.data)
   return res.data;
 }
 
 function Events({ setActive }) {
   const [data, setData] = useState([])
   const { ref, inView, _ } = useInView({
-    threshold: 0.5,
+    threshold: 0.2,
     triggerOnce: true
   });
 
@@ -184,8 +185,8 @@ function Events({ setActive }) {
           <NoEvents>
             <SVG 
               src={"/presentation-d.svg"}
-              width={500}
-              height={500}
+              width={800}
+              height={600}
               alt={"No Events"}
               />  
               <h4>
