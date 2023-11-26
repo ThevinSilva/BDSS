@@ -134,14 +134,13 @@ const fetchInfo = async () => {
   );
 
   const res = await req.json();
-
   if (res.statusCode > 300 && res.statusCode <= 200) return false;
   return res.data;
 };
 
 function OurEvents({ setActive }) {
   const { ref, inView, _ } = useInView({
-    threshold: 0.2,
+    threshold: 0.5,
     triggerOnce: true,
   });
   const [data, setData] = useState([]);
@@ -161,6 +160,7 @@ function OurEvents({ setActive }) {
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
+
         {inView && data ? (
           data.map(({ id, attributes }, i) => (
             <InnerGrid key={i} item xs={4} sm={4} md={4}>

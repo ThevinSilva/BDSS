@@ -42,7 +42,7 @@ const Links = styled(motion.div)`
     align-items: center;
     justify-content: flex-end;
     gap: 25px;
-    font-family: "Courier New", monospace;
+    font-family: "Quicksand", monospace;
 
     button {
       /* removes existing styling */
@@ -169,7 +169,7 @@ export default function Header({ active }) {
           tabs={Tabs} 
           clickHandler={clickHandler} 
           active={active}
-          isopen={isopen}
+          isOpen={isopen}
           toggleOpen={toggleOpen} 
         />
     </motion.nav>}

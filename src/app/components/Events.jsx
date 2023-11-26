@@ -39,6 +39,7 @@ const NoEvents = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  padding: 0px !important;
 
   h4 {
     display: flex;
@@ -68,10 +69,12 @@ const Text = styled(motion.div)`
 
 const SVG = styled(Image)`
   /* results in white color */
-  height: 60%;
+  width: 100%;
   padding-top: 10px;
   margin: 0 auto;
+
 `;
+
 
 const fetchInfo = async () => {
   const reqOptions = {
@@ -93,8 +96,10 @@ const fetchInfo = async () => {
 function Events({ setActive }) {
   const [data, setData] = useState([]);
   const { ref, inView, _ } = useInView({
+
     threshold: 0.5,
     triggerOnce: true,
+
   });
 
   useEffect(() => {
@@ -187,6 +192,7 @@ function Events({ setActive }) {
                         </List>
                       }
                     />
+
                     <CardContent></CardContent>
                     <CardActions>
                       <Button
@@ -211,6 +217,7 @@ function Events({ setActive }) {
               </NoEvents>
             ))}
         </Cards>
+
       </Section>
     </Container>
   );
