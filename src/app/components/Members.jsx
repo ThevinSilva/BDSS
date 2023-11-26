@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import { motion, useInView, useMotionValue } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
+import { WarningAmber } from "@mui/icons-material";
 
 const Section = styled.div`
   padding-top: 2em;
@@ -26,9 +27,30 @@ const Container = styled(motion.div)`
   }
 `;
 
+const Text = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100vw;
+
+  * {
+    font-size: var(--font-4x-large);
+    color: var(--nav-link-hover-color) !important;
+  }
+
+  @media screen and (max-width: 480px) {
+    * {
+      font-size: var(--font-2x-large);
+      text-align: center;
+    }
+  }
+`;
+
 const InnerContainer = styled(motion.div)`
   display: flex;
   width: fit-content;
+  height: ${(props) => (props.flag ? "33em" : "")};
 `;
 
 const Card = styled(motion.div)`
@@ -71,7 +93,7 @@ const staggeredVarients = (index) => {
 const Cards = ({ members }) => (
   <>
     {" "}
-    {members && members.map(({ id, attributes }, index) => (
+    {members.map(({ id, attributes }, index) => (
       <Card
         id={id}
         key={id}
@@ -99,41 +121,6 @@ const Cards = ({ members }) => (
   </>
 );
 
-// const members = [
-//   {
-//    name : "Jerry Wen",
-//    role : "President"
-//   },
-//   {
-//     name : "Lam Phong Nguyen Dang",
-//     role : "Vice-President"
-//   },
-//   {
-//     name : "Valerie Ooi",
-//     role : "Treasurer"
-//   },
-//   {
-//     name : "Hans Tan",
-//     role : "Secretary"
-//   },
-//   {
-//     name : "Annie Kemp",
-//     role : "Outreach Officer"
-//   },
-//   {
-//     name : "Walter Kwong",
-//     role : "Equality Officer"
-//   },
-//   {
-//     name : "Artin Tan",
-//     role : "Workshop Creator"
-//   },
-//   {
-//     name : "Lumi Long",
-//     role : "Lumi Long"
-//   }
-// ]
-
 const fetchInfo = async () => {
   const reqOptions = {
     headers: {
@@ -147,6 +134,7 @@ const fetchInfo = async () => {
   );
 
   const res = await req.json();
+  if (res.statusCode > 300 && res.statusCode <= 200) return false;
   return res.data;
 };
 
@@ -167,6 +155,7 @@ function Members() {
       <h2>WE ARE</h2>
       <Container ref={ref} style={{ x }}>
         <InnerContainer
+          flag={true}
           onMouseDown={(e) => {
             e.preventDefault();
           }}
@@ -180,7 +169,14 @@ function Members() {
             duration: 1,
           }}
         >
-          {inView && <Cards members={members} />}
+          {inView && members ? (
+            <Cards members={members} />
+          ) : (
+            <Text>
+              <WarningAmber fontSize={"large"} />
+              <h2>Error Occured</h2>
+            </Text>
+          )}
         </InnerContainer>
       </Container>
     </Section>
