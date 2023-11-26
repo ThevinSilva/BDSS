@@ -4,6 +4,7 @@ import { Grid } from "@mui/material";
 import { motion } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { WarningAmber } from "@mui/icons-material";
 
 const Container = styled(ViewWrapper)`
   height: 30em;
@@ -33,6 +34,26 @@ const Text = styled.div`
   @media screen and (max-width: 480px) {
     h2 {
       font-size: var(--font-2x-large);
+    }
+  }
+`;
+
+const ErrorText = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100vw;
+  font-size: var(--font-4x-large);
+
+  * {
+    color: var(--nav-link-hover-color) !important;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: var(--font-2x-large);
+    * {
+      text-align: center;
     }
   }
 `;
@@ -113,6 +134,7 @@ const fetchInfo = async () => {
   );
 
   const res = await req.json();
+  if (res.statusCode > 300 && res.statusCode <= 200) return false;
   return res.data;
 };
 
@@ -138,7 +160,8 @@ function OurEvents({ setActive }) {
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
-        {inView && data &&
+
+        {inView && data ? (
           data.map(({ id, attributes }, i) => (
             <InnerGrid key={i} item xs={4} sm={4} md={4}>
               <Info
@@ -154,7 +177,13 @@ function OurEvents({ setActive }) {
                 <p>{attributes.description}</p>
               </Info>
             </InnerGrid>
-          ))}
+          ))
+        ) : (
+          <ErrorText>
+            <WarningAmber fontSize={"inherit"} />
+            <h2>Error Occured</h2>
+          </ErrorText>
+        )}
       </OuterGrid>
     </Container>
   );

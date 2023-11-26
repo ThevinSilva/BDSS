@@ -6,7 +6,6 @@ import theme from "./Theme.js";
 import dynamic from "next/dynamic";
 import { ThemeProvider } from "@mui/material";
 import { useState, useRef, useEffect } from "react";
-import Head from "next/head";
 
 const Header = dynamic(() => import("./components/Header"));
 const Hero = dynamic(() => import("./components/Hero"));
@@ -20,6 +19,7 @@ const MainContent = styled.div`
   position: relative !important;
   width: 100vw;
   height: 100%;
+  overflow-x: clip !important;
 `;
 
 const Panels = styled.div`
@@ -28,10 +28,7 @@ const Panels = styled.div`
   top: 100vh;
   width: 100vw;
   left: 0px;
-`;
-
-const OverflowHidden = styled.div`
-  overflow-x: none !important;
+  scrollbar-width: none;
 `;
 
 function Home() {
@@ -41,30 +38,22 @@ function Home() {
 
   useEffect(() => {
     setPannels(ref.current.children);
+    document.title = "Bristol Data Science Society";
   }, [ref]);
 
   return (
     <MainContent>
-      <Head>
-        <title>My page title</title>
-        <meta property="og:title" content="My page title" key="title" />
-      </Head>
-      <Head>
-        <meta property="og:title" content="My new title" key="title" />
-      </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <Header active={active} pannels={pannels} />
         <Hero setActive={setActive} />
-        <OverflowHidden>
-          <Panels>
-            <About setActive={setActive} />
-            <OurEvents setActive={setActive} />
-            <Events setActive={setActive} />
-            <Contact setActive={setActive} />
-            <Footer setActive={setActive} />
-          </Panels>
-        </OverflowHidden>
+        <Panels>
+          <About setActive={setActive} />
+          <OurEvents setActive={setActive} />
+          <Events setActive={setActive} />
+          <Contact setActive={setActive} />
+          <Footer setActive={setActive} />
+        </Panels>
       </ThemeProvider>
     </MainContent>
   );
