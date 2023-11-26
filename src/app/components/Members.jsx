@@ -11,7 +11,6 @@ const Section = styled.div`
   text-align: center;
   background-color: rgb(51, 57, 109);
 
-
   h2 {
     font-size: var(--font-x-large);
     color: white !important;
@@ -53,7 +52,7 @@ const InnerContainer = styled(motion.div)`
   display: flex;
   width: fit-content;
 
-  height: ${(props) => (props.flag ? "33em" : "")};
+  height: 33em;
 `;
 
 const Card = styled(motion.div)`
@@ -137,7 +136,8 @@ const fetchInfo = async () => {
   );
 
   const res = await req.json();
-  if (res.statusCode > 300 && res.statusCode <= 200) return false;
+  if (res.statusCode >= 300 && res.statusCode < 200) return [];
+  console.log(res.data);
   return res.data;
 };
 
@@ -146,20 +146,22 @@ function Members() {
   const x = useMotionValue(0);
   const [width, setWidth] = useState(0);
   const [members, setMembers] = useState([]);
-  const { ref : viewRef, inView, _ } = useInView({
-    threshold: 1,
-    triggerOnce: true
+  const {
+    ref: viewRef,
+    inView,
+    _,
+  } = useInView({
+    threshold: 0.8,
+    triggerOnce: true,
   });
-
 
   const setRefs = useCallback(
     (node) => {
       ref.current = node;
       viewRef(node);
     },
-    [viewRef],
+    [viewRef]
   );
-
 
   useEffect(() => {
     setWidth(ref.current.scrollWidth - ref.current.offsetWidth);
@@ -171,7 +173,6 @@ function Members() {
       <h2>WE ARE</h2>
       <Container ref={setRefs} style={{ x }}>
         <InnerContainer
-          flag={true}
           onMouseDown={(e) => {
             e.preventDefault();
           }}
@@ -185,14 +186,15 @@ function Members() {
             duration: 1,
           }}
         >
-          {inView && members ? (
-            <Cards members={members} />
-          ) : (
-            <Text>
-              <WarningAmber fontSize={"large"} />
-              <h2>Error Occured</h2>
-            </Text>
-          )}
+          {inView &&
+            (members.length > 0 ? (
+              <Cards members={members} />
+            ) : (
+              <Text>
+                <WarningAmber fontSize={"large"} />
+                <h2>Error Occured</h2>
+              </Text>
+            ))}
         </InnerContainer>
       </Container>
     </Section>
