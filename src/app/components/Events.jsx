@@ -123,7 +123,7 @@ function Events({ setActive }) {
           spacing={2}
         >
           {inView &&
-            (data.length > 0 ? (
+            (data != null ? (
               data.map(({ id, attributes }) => (
                 <motion.div
                   key={id}
